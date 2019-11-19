@@ -2,7 +2,9 @@ import React from 'react';
 
 function ProductListItem(props) {
   const product = props.productData;
-  const price = product.price;
+  let price = product.price;
+  price = (price / 100).toFixed(2);
+  price = '$' + price;
   return (
     <div className="col-xl-4 mt-4">
       <div className="product card m-3">
