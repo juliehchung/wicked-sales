@@ -15,7 +15,7 @@ if ($request['method'] === 'GET') {
   }
   $sql = "SELECT * FROM products WHERE productId = $currentId";
   $queryResult = mysqli_query($link, $sql);
-  $result = mysqli_fetch_all($queryResult, MYSQLI_ASSOC);
+  $result = mysqli_fetch_assoc($queryResult);
   if (intval($result) && isset($currentId) && is_numeric($currentId)) {
     $response['body'] = $result;
     send($response);
