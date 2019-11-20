@@ -1,16 +1,16 @@
 <?php
 
 $link = get_db_link();
+$cartId = $_SESSION['cart_id'];
 
 if ($request['method'] === 'GET') {
   if (!isset($_SESSION['cart_id'])) {
     $response['body'] = [];
     send($response);
   } else {
-    $currentCart = $_SESSION['cart_id'];
-    $sqlAllCartItems = "SELECT * FROM cartItems WHERE cartItems.cartId = $currentCart";
+    $sqlAllCartItems = "SELECT * FROM cartItems WHERE cartItems.cartId = $cartId";
     $cartQuery = mysqli_query($link, $sqlAllCartItems);
-    $cartItems = mysqli_fetch_assoc($cartQuery);
+    $cartItems = mysqli_fetch_all($cartQuery, MYSQLI_ASSOC);
     $response['body'] = $cartItems;
     send($response);
   }
@@ -29,8 +29,10 @@ if ($request['method'] === 'POST') {
     }
     $price = mysqli_fetch_assoc($priceQuery);
     $sqlCreatedAt = "INSERT INTO carts (createdAt) VALUES (CURRENT_TIMESTAMP)";
-    $createdAtQuery = mysqli_query($link, $sqlCreatedAt);
-    $cartId = mysqli_insert_id($link);
+    if (!isset($_SESSION['cart_id'])) {
+      $createdAtQuery = mysqli_query($link, $sqlCreatedAt);
+      $cartId = mysqli_insert_id($link);
+    }
     $sqlCartItems = "INSERT INTO cartItems (cartId, productId, price) VALUES ($cartId, $productId, {$price['price']})";
     $cartItemsQuery = mysqli_query($link, $sqlCartItems);
     $cartItemId = mysqli_insert_id($link);
