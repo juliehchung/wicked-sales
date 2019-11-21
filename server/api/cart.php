@@ -8,7 +8,7 @@ if ($request['method'] === 'GET') {
     $response['body'] = [];
     send($response);
   } else {
-    $sqlAllCartItems = "SELECT * FROM cartItems WHERE cartItems.cartId = $cartId";
+    $sqlAllCartItems = "SELECT * FROM cartItems JOIN products ON products.productId = cartItems.productId WHERE cartItems.cartId = $cartId";
     $cartQuery = mysqli_query($link, $sqlAllCartItems);
     $cartItems = mysqli_fetch_all($cartQuery, MYSQLI_ASSOC);
     $response['body'] = $cartItems;
