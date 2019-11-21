@@ -16,6 +16,7 @@ class ProductDetails extends React.Component {
   }
 
   render() {
+    const addToCart = this.props.addItem;
     const productInfo = this.state.product;
     if (!productInfo) {
       return null;
@@ -35,6 +36,7 @@ class ProductDetails extends React.Component {
                 <h5 className="">{productInfo.name}</h5>
                 <h6 className="text-muted">{price}</h6>
                 <p className="">{productInfo.shortDescription}</p>
+                <button className="btn btn-primary" onClick={() => addToCart(productInfo)}>Add to Cart</button>
               </div>
             </div>
             <div className="container mt-4">
