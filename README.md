@@ -1,25 +1,58 @@
-# wicked-sales
+# Borker
 
-> - Maintained by: `thebearingedge`
+Previously known as Wicked Sales. A full stack JavaScript e-commerce application for pet-related products.
 
-A full stack LAMP & React shopping cart app.
+## Technologies Used
 
-## Introduction
+- React.js
+- Webpack 4
+- Bootstrap 4
+- PHP
+- MySQL
+- HTML5
+- CSS3
+- AWS EC2
 
-For this project, you will be building a single-page React application and a dynamic PHP API.
+## Live Demo
 
-## Getting Started
+Coming Soon
 
-1. Fork this repository to your GitHub account and clone the fork to your local `lfz` directory.
-2. Check out a `dev` branch and push it to `origin`.
+## Features
+
+- User can view a list of products.
+- User can view the product details.
+- User can add a product to the cart.
+- User can view a cart summary.
+- User can place an order.
+
+## Preview
+
+Coming Soon
+
+## Development
+
+#### System Requirements
+
+- NPM 6 or higher
+- MySQL 7 or higher
+
+#### Getting Started
+
+1. Clone the repository.
+
+    ```shell
+    git clone https://github.com/juliehchung/borker
+    cd borker
     ```
-    git push origin dev
-    ```
-3. Install all dependencies in `package.json` with NPM.
-    ```
+
+2. Install all dependencies with NPM.
+
+    ```shell
     npm install
     ```
 
-## Instructions
+3. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
 
-There are instructions and Issue Template snippets located in the `features` directory of [the instructions for this project](https://github.com/Learning-Fuze/wicked-sales-instructions).
+    ```shell
+    npm run dev
+    ```
