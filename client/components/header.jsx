@@ -14,7 +14,7 @@ function Header(props) {
       <a className="navbar-brand" href="">
         <div className="container">
           <i className="fas fa-dollar-sign m-3"></i>
-          Wicked Sales
+          BORKER
         </div>
       </a>
       <div className="collapse navbar-collapse mr-3">
