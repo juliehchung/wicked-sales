@@ -25,9 +25,9 @@ Coming Soon
 - User can view a cart summary.
 - User can place an order.
 
-## Preview
+## Preview of the App
 
-Coming Soon
+![Borker](server/public/images/BorkerDefault.png)
 
 ## Development
 
