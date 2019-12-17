@@ -1,6 +1,6 @@
-# wicked-sales
+# Borker
 
-A full stack JavaScript e-commerce application
+Previously known as Wicked Sales. A full stack JavaScript e-commerce application for pet supplies.
 
 ## Technologies Used
 
