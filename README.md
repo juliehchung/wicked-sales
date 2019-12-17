@@ -41,8 +41,8 @@ Coming Soon
 1. Clone the repository.
 
     ```shell
-    git clone https://github.com/juliehchung/wicked-sales
-    cd wicked-sales
+    git clone https://github.com/juliehchung/borker
+    cd borker
     ```
 
 2. Install all dependencies with NPM.
