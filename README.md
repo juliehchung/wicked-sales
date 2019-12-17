@@ -1,6 +1,6 @@
 # Borker
 
-Previously known as Wicked Sales. A full stack JavaScript e-commerce application for pet supplies.
+Previously known as Wicked Sales. A full stack JavaScript e-commerce application for pet-related products.
 
 ## Technologies Used
 
@@ -25,9 +25,9 @@ Coming Soon
 - User can view a cart summary.
 - User can place an order.
 
-## Preview
+## Preview of the App
 
-Coming Soon
+![Borker](server/public/images/BorkerDefault.png)
 
 ## Development
 
