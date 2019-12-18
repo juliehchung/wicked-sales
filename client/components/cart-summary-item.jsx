@@ -5,7 +5,7 @@ function CartSummaryItem(props) {
   let price = cartItemInfo.price;
   price = '$' + ((price / 100).toFixed(2));
   return (
-    <div className="card m-3">
+    <div className="card m-3 checkout-item">
       <div className="card-body">
         <div className="row">
           <img src={cartItemInfo.image} alt={cartItemInfo.name} className="cartItemImg col-m-2 ml-4" />

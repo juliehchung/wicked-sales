@@ -1,6 +1,6 @@
 .product {
-  width: 300px;
-  height: 400px;
+  width: 150%;
+  height: 200%;
 }
 
 .product > img {
@@ -16,4 +16,8 @@
 
 .back:hover, .product:hover {
   cursor: pointer;
+}
+
+.checkout-item {
+  width: 90%;
 }

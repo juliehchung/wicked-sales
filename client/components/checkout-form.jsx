@@ -15,9 +15,13 @@ class CheckoutForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.checkout(this.state);
+  }
+
   render() {
     const viewCatalog = this.props.viewData;
-    const placeOrder = this.props.checkout;
     const cart = this.props.priceInfo;
     let totalPrice = 0;
     cart.map(product => {
@@ -29,7 +33,7 @@ class CheckoutForm extends React.Component {
         <h2 className="container ml-4">My Cart</h2>
         <h5 className="container back text-muted ml-4">Order Total: {total}</h5>
         <div className="container d-flex flex-wrap m-3">
-          <div className="col-xl-10 ml-5">
+          <form className="col-xl-10 ml-5" onSubmit={() => this.handleSubmit()}>
             <div className="form-group">
               <label>Name</label>
               <input type="text" className="form-control" value={this.state.name} name='name' onChange={this.handleChange} />
@@ -46,9 +50,9 @@ class CheckoutForm extends React.Component {
               <div className="back text-muted mt-4" onClick={() => viewCatalog('catalog', {})}>
                 {'< Continue Shopping'}
               </div>
-              <button type="submit" className="btn btn-primary mt-3" onClick={() => placeOrder(this.state)}>Submit</button>
+              <button type="submit" className="btn btn-primary mt-3">Submit</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     );
