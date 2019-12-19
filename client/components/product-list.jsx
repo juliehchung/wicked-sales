@@ -23,7 +23,7 @@ class ProductList extends React.Component {
     const viewInfo = this.props.viewData;
     const prevProducts = Array.from(this.state.products);
     return (
-      <div className="container d-flex flex-wrap align-items-stretch mb-5">
+      <div className="container d-flex flex-wrap">
         {prevProducts.map(product => <ProductListItem key={product.productId} productData={product} viewData={viewInfo} />)}
       </div>
     );
