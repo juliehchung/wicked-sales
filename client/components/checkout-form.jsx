@@ -55,11 +55,13 @@ class CheckoutForm extends React.Component {
     });
     const total = '$' + ((totalPrice / 100).toFixed(2));
     return (
-      <div className="container col-xl-11 mt-5">
-        <h2 className="container ml-4">My Cart</h2>
-        <h5 className="container back text-muted ml-4">Order Total: {total}</h5>
-        <div className="container d-flex flex-wrap m-3">
-          <form className="col-xl-10 ml-5" onSubmit={this.handleSubmit}>
+      <div className="container col-12 col-sm-10 col-md-8 col-lg-8 my-5">
+        <div className="container col-12">
+          <h2>My Cart</h2>
+          <h5 className="text-muted">Order Total: {total}</h5>
+        </div>
+        <div className="d-flex flex-wrap m-3">
+          <form className="col-12" onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label>Name</label>
               <input type="text" className="form-control" value={this.state.name} name='name' onChange={this.handleChange} />
@@ -72,11 +74,13 @@ class CheckoutForm extends React.Component {
               <label>Shipping Address</label>
               <textarea className="form-control" rows="5" value={this.state.shippingAddress} name='shippingAddress' onChange={this.handleChange}></textarea>
             </div>
-            <div className="container mt-3 mb-5 d-flex justify-content-between">
-              <div className="back text-muted mt-4" onClick={() => viewCatalog('catalog', {})}>
-                {'< Continue Shopping'}
+            <div className="container">
+              <div className="row d-flex justify-content-between align-items-center my-3">
+                <div className="back text-muted" onClick={() => viewCatalog('catalog', {})}>
+                  {'< Continue Shopping'}
+                </div>
+                <button disabled={this.state.isDisabled} type="submit" className="btn btn-primary align-self-end">Submit</button>
               </div>
-              <button disabled={this.state.isDisabled} type="submit" className="btn btn-primary mt-3">Submit</button>
             </div>
           </form>
         </div>
