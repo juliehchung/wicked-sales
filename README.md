@@ -27,7 +27,7 @@ Coming Soon
 
 ## Preview of the App
 
-![Borker](server/public/images/borker.gif)
+![Borker](server/public/images/BorkerDefault.png)
 
 ## Development
 
