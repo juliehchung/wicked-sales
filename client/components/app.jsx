@@ -8,15 +8,15 @@ import CheckoutForm from './checkout-form';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { view: { name: 'catalog', params: {} }, cart: [] };
+    this.state = { view: { type: 'catalog', params: {} }, cart: [] };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
   }
 
-  setView(name, params) {
+  setView(type, params) {
     this.setState({
-      view: { name, params }
+      view: { type, params }
     });
   }
 
@@ -54,20 +54,20 @@ export default class App extends React.Component {
     };
     fetch(requestOrder, request)
       .then(response => response.json())
-      .then(order => this.setState({ view: { name: 'catalog', params: {} }, cart: [] }))
+      .then(order => this.setState({ view: { type: 'catalog', params: {} }, cart: [] }))
       .catch(error => console.error('Fetch Failed:', error));
   }
 
   render() {
     let productElem;
-    const viewName = this.state.view.name;
-    if (viewName === 'catalog') {
+    const viewType = this.state.view.type;
+    if (viewType === 'catalog') {
       productElem = <ProductList viewData={this.setView} />;
-    } else if (viewName === 'details') {
+    } else if (viewType === 'details') {
       productElem = <ProductDetails productData={this.state.view.params} viewData={this.setView} addItem={this.addToCart} />;
-    } else if (viewName === 'cart') {
+    } else if (viewType === 'cart') {
       productElem = <CartSummary cartItems={this.state.cart} viewData={this.setView}/>;
-    } else if (viewName === 'checkout') {
+    } else if (viewType === 'checkout') {
       productElem = <CheckoutForm checkout={this.placeOrder} viewData={this.setView} priceInfo={this.state.cart}/>;
     }
     const cartItemCount = this.state.cart.length;
