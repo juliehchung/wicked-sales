@@ -11,8 +11,8 @@ function CartSummary(props) {
   const total = '$' + ((totalPrice / 100).toFixed(2));
   return (
     <div className="container col-xl-10 mt-5">
-      <div className="back text-muted m-4" onClick={() => changeView('catalog', {})}>
-        {'< Back to catalog'}
+      <div className="text-muted m-4" onClick={() => changeView('catalog', {})}>
+        {'< Back to Catalog'}
       </div>
       <h2 className="container m-3">My Cart</h2>
       <div className="container d-flex flex-wrap">

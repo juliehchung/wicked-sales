@@ -24,24 +24,24 @@ class ProductDetails extends React.Component {
     let price = productInfo.price;
     price = '$' + ((price / 100).toFixed(2));
     return (
-      <div className="container col-xl-9 mt-5">
-        <div className="card">
-          <div className="back text-muted m-3" onClick={() => this.props.viewData('catalog', {})}>
-            {'< Back to catalog'}
+      <div className="container col-10 my-5">
+        <div className="">
+          <div className="text-muted m-3" onClick={() => this.props.viewData('catalog', {})}>
+            {'< Back to Catalog'}
           </div>
-          <div className="card-body">
-            <div className="row">
-              <img src={productInfo.image} alt={productInfo.name} className="detailsImg col-m-2 ml-4" />
-              <div className="container col-sm-5">
-                <h5>{productInfo.name}</h5>
-                <h6 className="text-muted">{price}</h6>
-                <p>{productInfo.shortDescription}</p>
-                <button className="btn btn-primary" onClick={() => addToCart(productInfo)}>Add to Cart</button>
-              </div>
+          <div className="">
+            <div className="col-md-4">
+              <img src={productInfo.image} alt={productInfo.name} className="detailsImg img-fluid rounded" />
             </div>
-            <div className="container mt-4">
-              {productInfo.longDescription}
+            <div className="col-md-8">
+              <h5>{productInfo.name}</h5>
+              <h6 className="text-muted">{price}</h6>
+              <p>{productInfo.shortDescription}</p>
+              <button className="btn btn-primary" onClick={() => addToCart(productInfo)}>Add to Cart</button>
             </div>
+          </div>
+          <div className="container">
+            {productInfo.longDescription}
           </div>
         </div>
       </div>
