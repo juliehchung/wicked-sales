@@ -8,10 +8,6 @@
   object-fit: contain;
 }
 
-/* .detailsImg, .cartItemImg {
-  max-width: 50%;
-} */
-
 .back:hover, .product:hover {
   cursor: pointer;
 }
