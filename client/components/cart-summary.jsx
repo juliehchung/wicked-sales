@@ -9,22 +9,31 @@ function CartSummary(props) {
     totalPrice = totalPrice + product.price;
   });
   const total = '$' + ((totalPrice / 100).toFixed(2));
-  return (
-    <div className="container col-xl-10 mt-5">
-      <div className="back text-muted m-4" onClick={() => changeView('catalog', {})}>
-        {'< Back to catalog'}
+  if (cart.length === 0) {
+    return (
+      <div className="container col-10 my-5">
+        <div className="back text-muted my-3" onClick={() => changeView('catalog', {})}>
+          {'< Back to Catalog'}
+        </div>
+        <h2>Your cart is empty!</h2>
       </div>
-      <h2 className="container m-3">My Cart</h2>
-      <div className="container d-flex flex-wrap">
+    );
+  }
+  return (
+    <div className="container col-10 my-5">
+      <div className="back text-muted my-3" onClick={() => changeView('catalog', {})}>
+        {'< Back to Catalog'}
+      </div>
+      <h2>My Cart</h2>
+      <div className="d-flex flex-wrap">
         {cart.map(cartItem => <CartSummaryItem key={cartItem.cartItemId} cartData={cartItem} />)}
       </div>
-      <div className="container row m-3 mb-5 d-flex justify-content-between">
-        <h4 className="m-3">
-          Total: {total}
-        </h4>
-        <button className="btn btn-primary m-2 mr-5" onClick={() => changeView('checkout', {})}>Checkout</button>
+      <div className="container">
+        <div className="row d-flex justify-content-between align-items-center my-3">
+          <h4>Total: {total}</h4>
+          <button className="btn btn-primary align-self-end" onClick={() => changeView('checkout', {})}>Checkout</button>
+        </div>
       </div>
-
     </div>
   );
 }

@@ -24,22 +24,24 @@ class ProductDetails extends React.Component {
     let price = productInfo.price;
     price = '$' + ((price / 100).toFixed(2));
     return (
-      <div className="container col-xl-9 mt-5">
-        <div className="card">
-          <div className="back text-muted m-3" onClick={() => this.props.viewData('catalog', {})}>
-            {'< Back to catalog'}
+      <div className="container col-10 my-5">
+        <div className="bg-white border rounded py-3">
+          <div className="back text-muted ml-3" onClick={() => this.props.viewData('catalog', {})}>
+            {'< Back to Catalog'}
           </div>
-          <div className="card-body">
-            <div className="row">
-              <img src={productInfo.image} alt={productInfo.name} className="detailsImg col-m-2 ml-4" />
-              <div className="container col-sm-5">
-                <h5>{productInfo.name}</h5>
-                <h6 className="text-muted">{price}</h6>
-                <p>{productInfo.shortDescription}</p>
-                <button className="btn btn-primary" onClick={() => addToCart(productInfo)}>Add to Cart</button>
-              </div>
+          <div className="row m-4">
+            <div className="col-md-4">
+              <img src={productInfo.image} alt={productInfo.name} className="img-fluid rounded" />
             </div>
-            <div className="container mt-4">
+            <div className="col-md-8 d-flex flex-column justify-content-end">
+              <h5>{productInfo.name}</h5>
+              <h6 className="text-muted">{price}</h6>
+              <p>{productInfo.shortDescription}</p>
+              <button className="btn btn-primary align-self-start" onClick={() => addToCart(productInfo)}>Add to Cart</button>
+            </div>
+          </div>
+          <div className="row m-4">
+            <div className="col-12">
               {productInfo.longDescription}
             </div>
           </div>
