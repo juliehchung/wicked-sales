@@ -1,6 +1,5 @@
 .product {
-  width: 150%;
-  height: 200%;
+  height: 100%;
 }
 
 .product > img {
