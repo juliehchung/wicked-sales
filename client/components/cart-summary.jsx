@@ -9,14 +9,8 @@ class CartSummary extends React.Component {
     };
   }
 
-  setDisabled() {
-    this.setState({ isDisabled: false });
-  }
-
-  componentDidUpdate() {
-    if (this.props.cartItems.length !== 0) {
-      this.setDisabled();
-    }
+  componentDidMount() {
+    this.setState({ isDisabled: !this.state.isDisabled });
   }
 
   render() {
@@ -27,7 +21,6 @@ class CartSummary extends React.Component {
       totalPrice = totalPrice + product.price;
     });
     const total = '$' + ((totalPrice / 100).toFixed(2));
-    const disabledMode = this.state.isDisabled ? 'true' : 'false';
     return (
       <div className="container col-10 my-5">
         <div className="back text-muted my-3" onClick={() => changeView('catalog', {})}>
@@ -40,7 +33,7 @@ class CartSummary extends React.Component {
         <div className="container">
           <div className="row d-flex justify-content-between align-items-center my-3">
             <h4>Total: {total}</h4>
-            <button disabled={disabledMode} className="btn btn-primary align-self-end" onClick={() => changeView('checkout', {})}>Checkout</button>
+            <button disabled={this.state.isDisabled} className="btn btn-primary align-self-end" onClick={() => changeView('checkout', {})}>Checkout</button>
           </div>
         </div>
       </div>
