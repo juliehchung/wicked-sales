@@ -11,7 +11,3 @@
 .back:hover, .product:hover {
   cursor: pointer;
 }
-
-.checkout-item {
-  width: 90%;
-}
