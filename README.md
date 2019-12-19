@@ -27,7 +27,7 @@ Coming Soon
 
 ## Preview of the App
 
-![Borker](server/public/images/BorkerDefault.png)
+![Borker](server/public/images/borker.gif)
 
 ## Development
 
@@ -56,4 +56,3 @@ Coming Soon
     ```shell
     npm run dev
     ```
-    
