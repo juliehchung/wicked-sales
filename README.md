@@ -15,7 +15,7 @@ Previously known as Wicked Sales. A full stack JavaScript e-commerce application
 
 ## Live Demo
 
-Coming Soon
+Link: https://borker.juliehchung.com
 
 ## Features
 
