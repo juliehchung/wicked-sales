@@ -8,7 +8,11 @@ if ($request['method'] === 'GET') {
     $response['body'] = [];
     send($response);
   } else {
-    $sqlAllCartItems = "SELECT * FROM cartItems JOIN products ON products.productId = cartItems.productId WHERE cartItems.cartId = $cartId";
+    $sqlAllCartItems = "SELECT *
+                          FROM cartItems AS c
+                          JOIN products AS p
+                            ON p.productId = c.productId
+                         WHERE c.cartId = $cartId";
     $cartQuery = mysqli_query($link, $sqlAllCartItems);
     $cartItems = mysqli_fetch_all($cartQuery, MYSQLI_ASSOC);
     $response['body'] = $cartItems;
@@ -33,11 +37,15 @@ if ($request['method'] === 'POST') {
       $createdAtQuery = mysqli_query($link, $sqlCreatedAt);
       $cartId = mysqli_insert_id($link);
     }
-    $sqlCartItems = "INSERT INTO cartItems (cartId, productId, price) VALUES ($cartId, $productId, {$price['price']})";
+    $sqlCartItems = "INSERT INTO cartItems (cartId, productId, price)
+                          VALUES ($cartId, $productId, {$price['price']})";
     $cartItemsQuery = mysqli_query($link, $sqlCartItems);
     $cartItemId = mysqli_insert_id($link);
-    $sqlProdCart = "SELECT cartItems.cartItemId, products.productId, products.name, products.price, products.image, products.shortDescription
-                    FROM products JOIN cartItems ON products.productId = cartItems.productId WHERE cartItems.cartItemId = $cartItemId";
+    $sqlProdCart = "SELECT c.cartItemId, p.productId, p.name, p.price, p.image, p.shortDescription
+                      FROM products AS p
+                      JOIN cartItems AS c
+                        ON p.productId = c.productId
+                     WHERE c.cartItemId = $cartItemId";
     $prodCartQuery = mysqli_query($link, $sqlProdCart);
     $prodCart = mysqli_fetch_assoc($prodCartQuery);
     $_SESSION['cart_id'] = $cartId;

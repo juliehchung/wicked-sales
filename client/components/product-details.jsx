@@ -7,6 +7,10 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
+    this.getProductDetails();
+  }
+
+  getProductDetails() {
     const prodId = this.props.productData.productId;
     const prodReq = new Request(`/api/products?productId=${prodId}`);
     fetch(prodReq)
