@@ -45,3 +45,19 @@ if ($request['method'] === 'POST') {
     send($response);
   }
 }
+
+if ($request['method'] === 'DELETE') {
+  $cartItemId = $request['body']['cartItemId'];
+  $productId = $request['body']['productId'];
+  if (!isset($productId) || !isset($cartItemId)) {
+    throw new ApiError('Valid Product Required', 400);
+  } else {
+    $sqlRemove = "DELETE FROM cartItems
+                        WHERE cartItemId = $cartItemId
+                          AND productId = $productId
+                          AND cartId = $cartId";
+    $removeQuery = mysqli_query($link, $sqlRemove);
+    $response['body'] = 'Product removed from cart';
+    send($response);
+  }
+}
