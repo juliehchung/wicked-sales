@@ -80,7 +80,7 @@ export default class App extends React.Component {
     } else if (viewType === 'details') {
       productElem = <ProductDetails productData={this.state.view.params} viewData={this.setView} addItem={this.addToCart} />;
     } else if (viewType === 'cart') {
-      productElem = <CartSummary cartItems={this.state.cart} updateCart={this.getCartItems} remove={this.removeFromCart} viewData={this.setView}/>;
+      productElem = <CartSummary cartItems={this.state.cart} remove={this.removeFromCart} viewData={this.setView}/>;
     } else if (viewType === 'checkout') {
       productElem = <CheckoutForm checkout={this.placeOrder} viewData={this.setView} priceInfo={this.state.cart}/>;
     }
