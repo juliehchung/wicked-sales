@@ -12,6 +12,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   setView(type, params) {
@@ -41,6 +42,19 @@ export default class App extends React.Component {
       .catch(error => console.error('Fetch Failed:', error));
   }
 
+  removeFromCart({ productId, cartItemId }) {
+    const requestCart = new Request('/api/cart');
+    const req = {
+      method: 'DELETE',
+      body: JSON.stringify({ productId, cartItemId }),
+      headers: { 'Content-Type': 'application/json' }
+    };
+    fetch(requestCart, req)
+      .then(response => response.json())
+      .then(data => this.getCartItems())
+      .catch(error => console.error('Fetch Failed:', error));
+  }
+
   componentDidMount() {
     this.getCartItems();
   }
@@ -66,7 +80,7 @@ export default class App extends React.Component {
     } else if (viewType === 'details') {
       productElem = <ProductDetails productData={this.state.view.params} viewData={this.setView} addItem={this.addToCart} />;
     } else if (viewType === 'cart') {
-      productElem = <CartSummary cartItems={this.state.cart} viewData={this.setView}/>;
+      productElem = <CartSummary cartItems={this.state.cart} updateCart={this.getCartItems} remove={this.removeFromCart} viewData={this.setView}/>;
     } else if (viewType === 'checkout') {
       productElem = <CheckoutForm checkout={this.placeOrder} viewData={this.setView} priceInfo={this.state.cart}/>;
     }
