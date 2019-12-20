@@ -13,8 +13,8 @@ function CartSummaryItem(props) {
         <span aria-hidden="true">&times;</span>
       </button>
       <div className="row py-2">
-        <img src={cartItemInfo.image} alt={cartItemInfo.name} className="cart-item img-fluid col-md-6" />
-        <div className="col-md-4 d-flex flex-column align-self-center">
+        <img src={cartItemInfo.image} alt={cartItemInfo.name} className="cart-item img-fluid col-md-4" />
+        <div className="col-md-8 d-flex flex-column align-self-center">
           <h5>{cartItemInfo.name}</h5>
           <h6 className="text-muted">{price}</h6>
           <p>{cartItemInfo.shortDescription}</p>
