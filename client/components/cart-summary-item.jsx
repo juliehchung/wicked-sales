@@ -4,6 +4,7 @@ function CartSummaryItem(props) {
   const cartItemInfo = props.cartData;
   const productId = cartItemInfo.productId;
   const cartItemId = cartItemInfo.cartItemId;
+  const quantity = cartItemInfo.quantity;
   let price = cartItemInfo.price;
   price = '$' + ((price / 100).toFixed(2));
   return (
@@ -18,6 +19,11 @@ function CartSummaryItem(props) {
           <h5>{cartItemInfo.name}</h5>
           <h6 className="text-muted">{price}</h6>
           <p>{cartItemInfo.shortDescription}</p>
+          <div className="d-flex flex-row align-items-center">
+            <i className="far fa-minus-square" onClick={() => props.update({ productId, operator: '-' })}></i>
+            <div>{quantity}</div>
+            <i className="far fa-plus-square" onClick={() => props.update({ productId, operator: '+' })}></i>
+          </div>
         </div>
       </div>
     </div>

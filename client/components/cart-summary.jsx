@@ -26,7 +26,7 @@ function CartSummary(props) {
       </div>
       <h2>My Cart</h2>
       <div className="d-flex flex-wrap">
-        {cart.map(cartItem => <CartSummaryItem key={cartItem.cartItemId} cartData={cartItem} remove={props.remove} />)}
+        {cart.map(cartItem => <CartSummaryItem key={cartItem.cartItemId} cartData={cartItem} remove={props.remove} update={props.update} />)}
       </div>
       <div className="container">
         <div className="row d-flex justify-content-between align-items-center my-3">

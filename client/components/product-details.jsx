@@ -41,7 +41,7 @@ class ProductDetails extends React.Component {
               <h5>{productInfo.name}</h5>
               <h6 className="text-muted">{price}</h6>
               <p>{productInfo.shortDescription}</p>
-              <button className="btn btn-primary align-self-start" onClick={() => addToCart(productInfo)}>Add to Cart</button>
+              <button className="btn btn-primary align-self-start" onClick={() => addToCart({ productId: productInfo.productId, operator: '+' })}>Add to Cart</button>
             </div>
           </div>
           <div className="row m-4">

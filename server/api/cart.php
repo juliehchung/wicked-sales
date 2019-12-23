@@ -22,6 +22,7 @@ if ($request['method'] === 'GET') {
 
 if ($request['method'] === 'POST') {
   $productId = $request['body']['productId'];
+  $operator = $request['body']['operator'];
   if (!isset($productId) || !is_numeric($productId) || intval($productId) === 0) {
     throw new ApiError('Valid ProductId Required', 400);
   } else {
@@ -37,11 +38,13 @@ if ($request['method'] === 'POST') {
       $createdAtQuery = mysqli_query($link, $sqlCreatedAt);
       $cartId = mysqli_insert_id($link);
     }
-    $sqlCartItems = "INSERT INTO cartItems (cartId, productId, price)
-                          VALUES ($cartId, $productId, {$price['price']})";
+    $sqlCartItems = "INSERT INTO cartItems (cartId, productId, price, quantity)
+                          VALUES ($cartId, $productId, {$price['price']}, 1)
+                              ON DUPLICATE
+                      KEY UPDATE quantity = quantity $operator 1";
     $cartItemsQuery = mysqli_query($link, $sqlCartItems);
     $cartItemId = mysqli_insert_id($link);
-    $sqlProdCart = "SELECT c.cartItemId, p.productId, p.name, p.price, p.image, p.shortDescription
+    $sqlProdCart = "SELECT c.cartItemId, c.quantity, p.productId, p.name, p.price, p.image, p.shortDescription
                       FROM products AS p
                       JOIN cartItems AS c
                         ON p.productId = c.productId
