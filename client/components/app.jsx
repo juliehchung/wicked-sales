@@ -10,7 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = { view: { type: 'catalog', params: {} }, cart: [] };
     this.setView = this.setView.bind(this);
-    this.addToCart = this.addToCart.bind(this);
+    this.updateCart = this.updateCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
   }
@@ -29,16 +29,16 @@ export default class App extends React.Component {
       .catch(error => console.error('Fetch Failed:', error));
   }
 
-  addToCart(product) {
+  updateCart({ productId, operator }) {
     const requestCart = new Request('/api/cart');
     const req = {
       method: 'POST',
-      body: JSON.stringify(product),
+      body: JSON.stringify({ productId, operator }),
       headers: { 'Content-Type': 'application/json' }
     };
     fetch(requestCart, req)
       .then(response => response.json())
-      .then(product => this.setState({ cart: this.state.cart.concat(product) }))
+      .then(data => this.getCartItems())
       .catch(error => console.error('Fetch Failed:', error));
   }
 
@@ -78,16 +78,15 @@ export default class App extends React.Component {
     if (viewType === 'catalog') {
       productElem = <ProductList viewData={this.setView} />;
     } else if (viewType === 'details') {
-      productElem = <ProductDetails productData={this.state.view.params} viewData={this.setView} addItem={this.addToCart} />;
+      productElem = <ProductDetails productData={this.state.view.params} viewData={this.setView} addItem={this.updateCart} />;
     } else if (viewType === 'cart') {
-      productElem = <CartSummary cartItems={this.state.cart} remove={this.removeFromCart} viewData={this.setView}/>;
+      productElem = <CartSummary cartItems={this.state.cart} remove={this.removeFromCart} update={this.updateCart} viewData={this.setView}/>;
     } else if (viewType === 'checkout') {
       productElem = <CheckoutForm checkout={this.placeOrder} viewData={this.setView} priceInfo={this.state.cart}/>;
     }
-    const cartItemCount = this.state.cart.length;
     return (
       <>
-        <Header cartItemCount={cartItemCount} viewData={this.setView}/>
+        <Header cart={this.state.cart} viewData={this.setView}/>
         <div className="container">
           {productElem}
         </div>

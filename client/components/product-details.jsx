@@ -7,6 +7,10 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
+    this.getProductDetails();
+  }
+
+  getProductDetails() {
     const prodId = this.props.productData.productId;
     const prodReq = new Request(`/api/products?productId=${prodId}`);
     fetch(prodReq)
@@ -37,7 +41,7 @@ class ProductDetails extends React.Component {
               <h5>{productInfo.name}</h5>
               <h6 className="text-muted">{price}</h6>
               <p>{productInfo.shortDescription}</p>
-              <button className="btn btn-primary align-self-start" onClick={() => addToCart(productInfo)}>Add to Cart</button>
+              <button className="btn btn-primary align-self-start" onClick={() => addToCart({ productId: productInfo.productId, operator: '+' })}>Add to Cart</button>
             </div>
           </div>
           <div className="row m-4">
