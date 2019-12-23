@@ -4,11 +4,17 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import LiveDemoModal from './live-demo-modal';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { view: { type: 'catalog', params: {} }, cart: [] };
+    this.state = {
+      view: { type: 'catalog', params: {} },
+      cart: [],
+      showDemoModal: true
+    };
+    this.closeModal = this.closeModal.bind(this);
     this.setView = this.setView.bind(this);
     this.updateCart = this.updateCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
@@ -19,6 +25,10 @@ export default class App extends React.Component {
     this.setState({
       view: { type, params }
     });
+  }
+
+  closeModal() {
+    this.setState({ showDemoModal: false });
   }
 
   getCartItems() {
@@ -75,6 +85,7 @@ export default class App extends React.Component {
   render() {
     let productElem;
     const viewType = this.state.view.type;
+    const modal = this.state.showDemoModal ? <LiveDemoModal close={this.closeModal} /> : null;
     if (viewType === 'catalog') {
       productElem = <ProductList viewData={this.setView} />;
     } else if (viewType === 'details') {
@@ -87,6 +98,9 @@ export default class App extends React.Component {
     return (
       <>
         <Header cart={this.state.cart} viewData={this.setView}/>
+        <div className="container col-10">
+          {modal}
+        </div>
         <div className="container">
           {productElem}
         </div>
