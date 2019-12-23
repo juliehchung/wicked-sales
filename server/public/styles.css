@@ -8,6 +8,6 @@
   object-fit: contain;
 }
 
-.back:hover, .product:hover {
+.back:hover, .product:hover, .add:hover, .sub:hover {
   cursor: pointer;
 }
