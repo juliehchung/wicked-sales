@@ -24,10 +24,6 @@ class CheckoutForm extends React.Component {
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    const name = this.state.name;
-    const creditCard = this.state.card;
-    const shippingAddress = this.state.shippingAddress;
-    this.setDisabled(name, creditCard, shippingAddress);
   }
 
   setDisabled(name, card, shippingAddress) {
@@ -40,10 +36,10 @@ class CheckoutForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const name = this.state.name;
-    const creditCard = this.state.card;
-    const shippingAddress = this.state.shippingAddress;
-    this.props.checkout({ name, creditCard, shippingAddress });
+    // const fullName = `${this.state.firstName} ${this.state.lastName}`;
+    // const address = `${this.state.address} \n${this.state.address2} \n${this.state.city}, ${this.state.state} ${this.state.zip}`;
+    // const cardHolder = this.state.cardHolder;
+    // const card = this.state.card.split(' ').join().split('-').join();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -60,8 +56,8 @@ class CheckoutForm extends React.Component {
     const viewCatalog = this.props.viewData;
     const cart = this.props.priceInfo;
     let totalPrice = 0;
-    cart.map(product => {
-      totalPrice = totalPrice + product.price;
+    cart.forEach(product => {
+      totalPrice = totalPrice + product.price * product.quantity;
     });
     // const total = '$' + ((totalPrice / 100).toFixed(2));
     return (
