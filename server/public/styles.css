@@ -11,3 +11,15 @@
 .back:hover, .product:hover, .add:hover, .sub:hover {
   cursor: pointer;
 }
+
+.backdrop {
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.384) ;
+  left: 0;
+  top: 0;
+}
+
+.modal-contents {
+  max-width: 500px;
+  user-select: none;
+}
