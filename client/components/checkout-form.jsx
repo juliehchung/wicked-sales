@@ -15,6 +15,7 @@ class CheckoutForm extends React.Component {
       card: '',
       expiration: '',
       cvv: '',
+      acknowledgement: false,
       isDisabled: true
     };
     this.handleChange = this.handleChange.bind(this);
