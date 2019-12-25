@@ -6,6 +6,8 @@ class CheckoutForm extends React.Component {
     this.state = {
       firstName: '',
       lastName: '',
+      email: '',
+      phone: '',
       address: '',
       address2: '',
       city: '',
@@ -37,12 +39,14 @@ class CheckoutForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const fullName = `${this.state.firstName} ${this.state.lastName}`;
+    const email = this.state.email;
+    const phone = this.state.phone;
     const address = `${this.state.address} \n${this.state.address2} \n${this.state.city}, ${this.state.state} ${this.state.zip}`;
     const cardHolder = this.state.cardHolder;
     const card = this.state.card.split(' ').join().split('-').join();
     const expiration = this.state.expiration.split('/').join().split('-').join();
     const cvv = this.state.cvv;
-    this.props.checkout({ fullName, address, cardHolder, card, expiration, cvv });
+    this.props.checkout({ fullName, email, phone, address, cardHolder, card, expiration, cvv });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -76,6 +80,16 @@ class CheckoutForm extends React.Component {
               <div className="form-group col-md-6">
                 <label htmlFor="lastName">Last Name</label>
                 <input type="text" className="form-control" id="lastName" value={this.state.lastName} name='lastName' onChange={this.handleChange} required />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <label htmlFor="firstName">Email</label>
+                <input type="text" className="form-control" id="email" value={this.state.email} name='email' onChange={this.handleChange} required />
+              </div>
+              <div className="form-group col-md-6">
+                <label htmlFor="lastName">Phone Number</label>
+                <input type="text" className="form-control" id="phone" value={this.state.phone} name='phone' onChange={this.handleChange} required />
               </div>
             </div>
             <div className="form-group">
