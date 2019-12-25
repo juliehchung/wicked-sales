@@ -7,22 +7,19 @@ if ($request['method'] === 'POST') {
   if (!isset($cartId)) {
     throw new ApiError('Active Shopping Cart Required', 400);
   } else {
-    $requestBody = $request['body'];
-    $name = $requestBody['name'];
-    $creditCard = $requestBody['creditCard'];
-    $shippingAddress = $requestBody['shippingAddress'];
-    if (!isset($name)) {
-      throw new ApiError("Name is Required", 400);
+    $fullName = $request['body']['fullName'];
+    $address = $request['body']['address'];
+    $cardHolder = $request['body']['cardHolder'];
+    $card = $request['body']['card'];
+    $expiration = $request['body']['expiration'];
+    $cvv = $request['body']['cvv'];
+    if (!isset($fullName) || !isset($address) || !isset($cardHolder) || !isset($card) || !isset($expiration) || !isset($cvv)) {
+      throw new ApiError("This field is Required", 400);
     }
-    if (!isset($creditCard)) {
-      throw new ApiError("Credit Card is Required", 400);
-    }
-    if (!isset($shippingAddress)) {
-      throw new ApiError("Shipping Address is Required", 400);
-    }
-    $sqlOrdersInsert = "INSERT INTO orders (cartId, name, creditCard, shippingAddress) VALUES (?, ?, ?, ?)";
+    $sqlOrdersInsert = "INSERT INTO orders (cartId, fullName, address, cardHolder, card, expiration, cvv)
+                             VALUES (?, ?, ?, ?, ?, ?, ?)";
     $statement = mysqli_prepare($link, $sqlOrdersInsert);
-    mysqli_stmt_bind_param($statement, "isss", $cartId, $name, $creditCard, $shippingAddress);
+    mysqli_stmt_bind_param($statement, "isssiii", $cartId, $fullName, $address, $cardHolder, $card, $expiration, $cvv);
     mysqli_stmt_execute($statement);
     $orderId = mysqli_insert_id($link);
     $sqlOrders = "SELECT * FROM orders WHERE orderId = $orderId";

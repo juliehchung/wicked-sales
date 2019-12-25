@@ -26,20 +26,23 @@ class CheckoutForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  setDisabled(name, card, shippingAddress) {
-    if (name !== '' && card !== '' && shippingAddress !== '') {
-      this.setState({ isDisabled: false });
-    } else {
-      this.setState({ isDisabled: true });
-    }
-  }
+  // setDisabled() {
+  //   if (name !== '' && card !== '' && shippingAddress !== '') {
+  //     this.setState({ isDisabled: false });
+  //   } else {
+  //     this.setState({ isDisabled: true });
+  //   }
+  // }
 
   handleSubmit(event) {
     event.preventDefault();
-    // const fullName = `${this.state.firstName} ${this.state.lastName}`;
-    // const address = `${this.state.address} \n${this.state.address2} \n${this.state.city}, ${this.state.state} ${this.state.zip}`;
-    // const cardHolder = this.state.cardHolder;
-    // const card = this.state.card.split(' ').join().split('-').join();
+    const fullName = `${this.state.firstName} ${this.state.lastName}`;
+    const address = `${this.state.address} \n${this.state.address2} \n${this.state.city}, ${this.state.state} ${this.state.zip}`;
+    const cardHolder = this.state.cardHolder;
+    const card = this.state.card.split(' ').join().split('-').join();
+    const expiration = this.state.expiration.split('/').join().split('-').join();
+    const cvv = this.state.cvv;
+    this.props.checkout({ fullName, address, cardHolder, card, expiration, cvv });
   }
 
   componentDidUpdate(prevProps, prevState) {

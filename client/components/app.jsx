@@ -69,11 +69,11 @@ export default class App extends React.Component {
     this.getCartItems();
   }
 
-  placeOrder({ name, creditCard, shippingAddress }) {
+  placeOrder({ fullName, address, cardHolder, card, expiration, cvv }) {
     const requestOrder = new Request('/api/orders');
     const request = {
       method: 'POST',
-      body: JSON.stringify({ name, creditCard, shippingAddress }),
+      body: JSON.stringify({ fullName, address, cardHolder, card, expiration, cvv }),
       headers: { 'Content-Type': 'application/json' }
     };
     fetch(requestOrder, request)
