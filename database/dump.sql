@@ -30,7 +30,7 @@ CREATE TABLE `cartItems` (
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`cartItemId`),
   UNIQUE KEY `SECONDARY` (`cartId`,`productId`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `cartItems` (
 
 LOCK TABLES `cartItems` WRITE;
 /*!40000 ALTER TABLE `cartItems` DISABLE KEYS */;
+INSERT INTO `cartItems` VALUES (170,49,1,995,3),(175,50,1,995,2);
 /*!40000 ALTER TABLE `cartItems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,7 +54,7 @@ CREATE TABLE `carts` (
   `cartId` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`cartId`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,6 +63,7 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
+INSERT INTO `carts` VALUES (49,'2019-12-24 00:26:36'),(50,'2019-12-24 17:17:56');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,9 +77,14 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `orderId` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `cartId` int(11) NOT NULL,
-  `name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `creditCard` varchar(24) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shippingAddress` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fullName` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` int(11) NOT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cardHolder` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `card` int(32) NOT NULL,
+  `expiration` int(11) NOT NULL,
+  `cvv` int(11) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`orderId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -129,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-23  7:39:15
+-- Dump completed on 2019-12-25  1:34:25

@@ -6,6 +6,8 @@ class CheckoutForm extends React.Component {
     this.state = {
       firstName: '',
       lastName: '',
+      email: '',
+      phone: '',
       address: '',
       address2: '',
       city: '',
@@ -24,26 +26,29 @@ class CheckoutForm extends React.Component {
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    const name = this.state.name;
-    const creditCard = this.state.card;
-    const shippingAddress = this.state.shippingAddress;
-    this.setDisabled(name, creditCard, shippingAddress);
   }
 
-  setDisabled(name, card, shippingAddress) {
-    if (name !== '' && card !== '' && shippingAddress !== '') {
-      this.setState({ isDisabled: false });
-    } else {
-      this.setState({ isDisabled: true });
-    }
-  }
+  // setDisabled() {
+  //   if (name !== '' && card !== '' && shippingAddress !== '') {
+  //     this.setState({ isDisabled: false });
+  //   } else {
+  //     this.setState({ isDisabled: true });
+  //   }
+  // }
 
   handleSubmit(event) {
     event.preventDefault();
-    const name = this.state.name;
-    const creditCard = this.state.card;
-    const shippingAddress = this.state.shippingAddress;
-    this.props.checkout({ name, creditCard, shippingAddress });
+    const placeOrder = {
+      fullName: `${this.state.firstName} ${this.state.lastName}`,
+      email: this.state.email,
+      phone: this.state.phone,
+      address: `${this.state.address} \n${this.state.address2} \n${this.state.city}, ${this.state.state} ${this.state.zip}`,
+      cardHolder: this.state.cardHolder,
+      card: this.state.card.split(' ').join().split('-').join(),
+      expiration: this.state.expiration.split('/').join().split('-').join(),
+      cvv: this.state.cvv
+    };
+    this.props.checkout({ placeOrder });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -60,8 +65,8 @@ class CheckoutForm extends React.Component {
     const viewCatalog = this.props.viewData;
     const cart = this.props.priceInfo;
     let totalPrice = 0;
-    cart.map(product => {
-      totalPrice = totalPrice + product.price;
+    cart.forEach(product => {
+      totalPrice = totalPrice + product.price * product.quantity;
     });
     // const total = '$' + ((totalPrice / 100).toFixed(2));
     return (
@@ -77,6 +82,16 @@ class CheckoutForm extends React.Component {
               <div className="form-group col-md-6">
                 <label htmlFor="lastName">Last Name</label>
                 <input type="text" className="form-control" id="lastName" value={this.state.lastName} name='lastName' onChange={this.handleChange} required />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <label htmlFor="firstName">Email</label>
+                <input type="text" className="form-control" id="email" value={this.state.email} name='email' onChange={this.handleChange} required />
+              </div>
+              <div className="form-group col-md-6">
+                <label htmlFor="lastName">Phone Number</label>
+                <input type="text" className="form-control" id="phone" value={this.state.phone} name='phone' onChange={this.handleChange} required />
               </div>
             </div>
             <div className="form-group">
