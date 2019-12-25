@@ -38,15 +38,17 @@ class CheckoutForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const fullName = `${this.state.firstName} ${this.state.lastName}`;
-    const email = this.state.email;
-    const phone = this.state.phone;
-    const address = `${this.state.address} \n${this.state.address2} \n${this.state.city}, ${this.state.state} ${this.state.zip}`;
-    const cardHolder = this.state.cardHolder;
-    const card = this.state.card.split(' ').join().split('-').join();
-    const expiration = this.state.expiration.split('/').join().split('-').join();
-    const cvv = this.state.cvv;
-    this.props.checkout({ fullName, email, phone, address, cardHolder, card, expiration, cvv });
+    const placeOrder = {
+      fullName: `${this.state.firstName} ${this.state.lastName}`,
+      email: this.state.email,
+      phone: this.state.phone,
+      address: `${this.state.address} \n${this.state.address2} \n${this.state.city}, ${this.state.state} ${this.state.zip}`,
+      cardHolder: this.state.cardHolder,
+      card: this.state.card.split(' ').join().split('-').join(),
+      expiration: this.state.expiration.split('/').join().split('-').join(),
+      cvv: this.state.cvv
+    };
+    this.props.checkout({ placeOrder });
   }
 
   componentDidUpdate(prevProps, prevState) {
