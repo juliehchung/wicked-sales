@@ -15,7 +15,7 @@ if ($request['method'] === 'POST') {
     $card = $request['body']['card'];
     $expiration = $request['body']['expiration'];
     $cvv = $request['body']['cvv'];
-    if (!isset($fullName) || !isset($address) || !isset($cardHolder) || !isset($card) || !isset($expiration) || !isset($cvv)) {
+    if (!isset($fullName) || !isset($email) || !isset($phone) || !isset($address) || !isset($cardHolder) || !isset($card) || !isset($expiration) || !isset($cvv)) {
       throw new ApiError("This field is Required", 400);
     }
     $sqlOrdersInsert = "INSERT INTO orders (cartId, fullName, email, phone, address, cardHolder, card, expiration, cvv)

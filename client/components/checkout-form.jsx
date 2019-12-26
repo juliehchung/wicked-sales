@@ -148,11 +148,11 @@ class CheckoutForm extends React.Component {
         phone: this.state.phone,
         address: `${this.state.address} \n${this.state.address2} \n${this.state.city}, ${this.state.state} ${this.state.zip}`,
         cardHolder: this.state.cardHolder,
-        card: this.state.card.split(' ').join().split('-').join(),
+        card: this.state.card,
         expiration: `${this.state.month}/${this.state.year}`,
         cvv: this.state.cvv
       };
-      this.props.checkout({ placeOrder });
+      this.props.checkout(placeOrder);
     } else {
       this.setState({ checkValidity });
     }
