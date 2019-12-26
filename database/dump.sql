@@ -82,12 +82,12 @@ CREATE TABLE `orders` (
   `phone` int(11) NOT NULL,
   `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `cardHolder` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `card` int(32) NOT NULL,
+  `card` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `expiration` int(11) NOT NULL,
   `cvv` int(11) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`orderId`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,6 +96,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (18,50,'Blabbity Blab','blabber@blab.blab',1234567890,'1234 Blab Blvd. \n \nBlabbers, AL 12345','Blabbity Blab','1234123412341234',1,123,'2019-12-26 23:36:36');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-25  1:34:25
+-- Dump completed on 2019-12-26 23:43:20
