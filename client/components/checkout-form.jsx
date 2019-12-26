@@ -4,8 +4,7 @@ class CheckoutForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
+      fullName: '',
       email: '',
       phone: '',
       address: '',
@@ -17,48 +16,148 @@ class CheckoutForm extends React.Component {
       card: '',
       expiration: '',
       cvv: '',
-      acknowledgement: false,
-      isDisabled: true
+      checkValidity: {
+        fullName: true,
+        email: true,
+        phone: true,
+        address: true,
+        address2: true,
+        city: true,
+        state: true,
+        zip: true,
+        cardHolder: true,
+        card: true,
+        expiration: true,
+        cvv: true,
+        acknowledgement: true
+      }
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
-  }
+    const checkValidity = {
+      fullName: true,
+      email: true,
+      phone: true,
+      address: true,
+      address2: true,
+      city: true,
+      state: true,
+      zip: true,
+      cardHolder: true,
+      card: true,
+      expiration: true,
+      cvv: true,
+      acknowledgement: true
+    };
 
-  // setDisabled() {
-  //   if (name !== '' && card !== '' && shippingAddress !== '') {
-  //     this.setState({ isDisabled: false });
-  //   } else {
-  //     this.setState({ isDisabled: true });
-  //   }
-  // }
+    const numRegex = RegExp(/^[0-9]*$/);
+    const zipRegex = RegExp(/^[0-9]*-*[0-9]*$/);
+    const expRegex = RegExp(/^[0-9]*\/*[0-9]*$/);
+
+    switch (event.target.name) {
+      case 'phone':
+      case 'card':
+      case 'cvv':
+        if (numRegex.test(event.target.value)) {
+          this.setState({ [event.target.name]: event.target.value });
+        }
+        break;
+      case 'zip':
+        if (zipRegex.test(event.target.value)) {
+          this.setState({ [event.target.name]: event.target.value });
+        }
+        break;
+      case 'expiration':
+        if (expRegex.test(event.target.value)) {
+          this.setState({ [event.target.name]: event.target.value });
+        }
+        break;
+      default:
+        this.setState({ [event.target.name]: event.target.value });
+        break;
+    }
+
+    this.setState({ checkValidity });
+  }
 
   handleSubmit(event) {
     event.preventDefault();
-    const placeOrder = {
-      fullName: `${this.state.firstName} ${this.state.lastName}`,
-      email: this.state.email,
-      phone: this.state.phone,
-      address: `${this.state.address} \n${this.state.address2} \n${this.state.city}, ${this.state.state} ${this.state.zip}`,
-      cardHolder: this.state.cardHolder,
-      card: this.state.card.split(' ').join().split('-').join(),
-      expiration: this.state.expiration.split('/').join().split('-').join(),
-      cvv: this.state.cvv
-    };
-    this.props.checkout({ placeOrder });
-  }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.name !== prevState.name) {
-      this.setDisabled(this.state.name, this.state.card, this.state.shippingAddress);
-    } else if (this.state.card !== prevState.card) {
-      this.setDisabled(this.state.name, this.state.card, this.state.shippingAddress);
-    } else if (this.state.shippingAddress !== prevState.shippingAddress) {
-      this.setDisabled(this.state.name, this.state.card, this.state.shippingAddress);
+    const checkValidity = {
+      fullName: true,
+      email: true,
+      phone: true,
+      address: true,
+      address2: true,
+      city: true,
+      state: true,
+      zip: true,
+      cardHolder: true,
+      card: true,
+      expiration: true,
+      cvv: true,
+      acknowledgement: true
+    };
+
+    const emailRegex = RegExp(/^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    const zipRegex = RegExp(/^[0-9]{5}(?:-[0-9]{4})?$/);
+    const expRegex = RegExp(/^(0[1-9]|1[0-2])\/[0-9]{4}$/);
+
+    if (this.state.fullName.length < 5) {
+      checkValidity.fullName = false;
     }
+
+    if (!emailRegex.test(this.state.email)) {
+      checkValidity.email = false;
+    }
+
+    if (this.state.phone.length < 10) {
+      checkValidity.phone = false;
+    }
+
+    if (this.state.state === 'Choose State...') {
+      checkValidity.state = false;
+    }
+
+    if (!zipRegex.test(this.state.zip)) {
+      checkValidity.zip = false;
+    }
+
+    if (this.state.card.length < 16) {
+      checkValidity.card = false;
+    }
+
+    if (!expRegex.test(this.state.expiration)) {
+      checkValidity.expiration = false;
+    }
+
+    if (this.state.cvv.length < 3) {
+      checkValidity.cvv = false;
+    }
+
+    if (this.state.acknowledgement === false) {
+      checkValidity.acknowledgement = false;
+    }
+
+    if (Object.values(checkValidity).find(element => element === false) === undefined) {
+      const placeOrder = {
+        fullName: this.state.fullName,
+        email: this.state.email,
+        phone: this.state.phone,
+        address: `${this.state.address} \n${this.state.address2} \n${this.state.city}, ${this.state.state} ${this.state.zip}`,
+        cardHolder: this.state.cardHolder,
+        card: this.state.card.split(' ').join().split('-').join(),
+        expiration: this.state.expiration,
+        cvv: this.state.cvv
+      };
+      this.props.checkout({ placeOrder });
+    } else {
+      this.setState({ checkValidity });
+    }
+
   }
 
   render() {
@@ -66,7 +165,7 @@ class CheckoutForm extends React.Component {
     const cart = this.props.priceInfo;
     let totalPrice = 0;
     cart.forEach(product => {
-      totalPrice = totalPrice + product.price * product.quantity;
+      totalPrice = totalPrice + (product.price * product.quantity);
     });
     // const total = '$' + ((totalPrice / 100).toFixed(2));
     return (
@@ -74,42 +173,39 @@ class CheckoutForm extends React.Component {
         <div className="d-flex flex-wrap m-3">
           <form className="col-12" onSubmit={this.handleSubmit}>
             <h3 className="mb-3">Billing/Shipping</h3>
-            <div className="form-row">
-              <div className="form-group col-md-6">
-                <label htmlFor="firstName">First Name</label>
-                <input type="text" className="form-control" id="firstName" value={this.state.firstName} name='firstName' onChange={this.handleChange} required />
-              </div>
-              <div className="form-group col-md-6">
-                <label htmlFor="lastName">Last Name</label>
-                <input type="text" className="form-control" id="lastName" value={this.state.lastName} name='lastName' onChange={this.handleChange} required />
-              </div>
+            <div className="form-group">
+              <label htmlFor="fullName">Full Name</label>
+              <input type="text" minLength="5" maxLength="65" className="form-control" id="fullName" value={this.state.fullName} name='fullName' onChange={this.handleChange} required />
+              <div className="invalid-feedback">Must be at least 5 characters.</div>
             </div>
             <div className="form-row">
               <div className="form-group col-md-6">
-                <label htmlFor="firstName">Email</label>
-                <input type="text" className="form-control" id="email" value={this.state.email} name='email' onChange={this.handleChange} required />
+                <label htmlFor="email">Email</label>
+                <input type="email" minLength="6" maxLength="254" className="form-control" id="email" value={this.state.email} name='email' onChange={this.handleChange} required />
+                <div className="invalid-feedback">Please enter a valid email.</div>
               </div>
               <div className="form-group col-md-6">
-                <label htmlFor="lastName">Phone Number</label>
-                <input type="text" className="form-control" id="phone" value={this.state.phone} name='phone' onChange={this.handleChange} required />
+                <label htmlFor="phone">Phone Number</label>
+                <input type="tel" minLength="10" maxLength="11" className="form-control" id="phone" value={this.state.phone} name='phone' onChange={this.handleChange} placeholder="1234567890" required />
+                <div className="invalid-feedback">Please enter a valid phone number.</div>
               </div>
             </div>
             <div className="form-group">
               <label htmlFor="address">Address</label>
-              <input type="text" className="form-control" id="address" value={this.state.address} name="address" placeholder="1234 Main St." required />
+              <input type="text" minLength="6" maxLength="42" className="form-control" id="address" value={this.state.address} name="address" placeholder="1234 Main St." onChange={this.handleChange} required />
             </div>
             <div className="form-group">
               <label htmlFor="address2">Address 2</label>
-              <input type="text" className="form-control" id="address2" value={this.state.address2} name="address2" placeholder="Apartment, Studio, or Floor" required />
+              <input type="text" maxLength="42" className="form-control" id="address2" value={this.state.address2} name="address2" placeholder="Apartment, Studio, or Floor" onChange={this.handleChange} required />
             </div>
             <div className="form-row">
               <div className="form-group col-md-6">
                 <label htmlFor="city">City</label>
-                <input type="text" className="form-control" id="city" value={this.state.city} name="city" required />
+                <input type="text" minLength="3" maxLength="50" className="form-control" id="city" value={this.state.city} name="city" onChange={this.handleChange} required />
               </div>
               <div className="form-group col-md-4">
                 <label htmlFor="state">State</label>
-                <select id="state" className="form-control" value={this.state.state} name="state" required >
+                <select id="state" className="form-control" value={this.state.state} name="state" onChange={this.handleChange} required >
                   <option defaultValue >Choose State...</option>
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
@@ -166,7 +262,8 @@ class CheckoutForm extends React.Component {
               </div>
               <div className="form-group col-md-2">
                 <label htmlFor="zip">Zip</label>
-                <input type="text" className="form-control" id="zip" value={this.state.zip} name="zip" required />
+                <input type="text" minLength="5" maxLength="10" className="form-control" id="zip" value={this.state.zip} name="zip" onChange={this.handleChange} required />
+                <div className="invalid-feedback">Please enter a valid zip code.</div>
               </div>
             </div>
             <hr className="my-4" />
@@ -174,21 +271,25 @@ class CheckoutForm extends React.Component {
             <div className="form-row">
               <div className="form-group col-md-6">
                 <label htmlFor="cardHolder">Name on Card</label>
-                <input type="text" className="form-control" id="cardHolder" value={this.state.cardHolder} name="cardHolder" required />
+                <input type="text" minLength="5" maxLength="65" className="form-control" id="cardHolder" value={this.state.cardHolder} name="cardHolder" onChange={this.handleChange} required />
+                <div className="invalid-feedback">Must be at least 5 characters.</div>
               </div>
               <div className="form-group col-md-6">
                 <label htmlFor="cardNumber">Card Number</label>
-                <input type="text" className="form-control" id="cardNumber" value={this.state.card} name="card" placeholder="0000 0000 0000 0000" required />
+                <input type="text" minLength="16" maxLength="16" className="form-control" id="cardNumber" value={this.state.card} name="card" placeholder="0000 0000 0000 0000" onChange={this.handleChange} required />
+                <div className="invalid-feedback">Please enter a valid card number.</div>
               </div>
             </div>
             <div className="form-row">
               <div className="form-group col-md-4">
                 <label htmlFor="expiration">Expiration</label>
-                <input type="text" className="form-control" id="expiration" value={this.state.expiration} name="expiration" placeholder="MM/YYYY" required />
+                <div className="invalid-feedback">Please enter a valid expiration date.</div>
+                <input type="text" minLength="7" maxLength="7" className="form-control" id="expiration" value={this.state.expiration} name="expiration" placeholder="MM/YYYY" onChange={this.handleChange} required />
               </div>
-              <div className="form-group col-md-2">
+              <div className="form-group col-md-4">
                 <label htmlFor="cvv">CVV</label>
-                <input type="text" className="form-control" id="cvv" value={this.state.cvv} name="cvv" placeholder="###" required />
+                <input type="text" minLength="3" maxLength="4" className="form-control" id="cvv" value={this.state.cvv} name="cvv" placeholder="###" onChange={this.handleChange} required />
+                <div className="invalid-feedback">Please enter a valid CVV.</div>
               </div>
             </div>
             <hr className="my-4" />
@@ -197,7 +298,7 @@ class CheckoutForm extends React.Component {
               <label className="form-check-label" htmlFor="acknowledgement">I acknowledge that this is a demo application, and the information above is not my genuine financial or personal information.</label>
             </div>
             <hr className="my-4" />
-            <button disabled={this.state.isDisabled} type="submit" className="btn btn-primary align-self-end">Submit</button>
+            <button type="submit" className="btn btn-primary align-self-end">Submit</button>
           </form>
           <div className="container">
             <div className="row d-flex justify-content-between align-items-center my-3">
