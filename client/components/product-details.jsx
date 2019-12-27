@@ -1,5 +1,5 @@
 import React from 'react';
-import AddToCartModal from './add-to-cart-modal';
+import AddItemModal from './add-item-modal';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class ProductDetails extends React.Component {
     }
     let price = productInfo.price;
     price = '$' + ((price / 100).toFixed(2));
-    const modal = this.state.showModal ? <AddToCartModal setView={this.props.viewData} product={productInfo}/> : null;
+    const modal = this.state.showModal ? <AddItemModal setView={this.props.viewData} product={productInfo}/> : null;
     return (
       <div className="container col-10 my-5">
         <div className="container col-10">
