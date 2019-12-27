@@ -97,7 +97,8 @@ class CheckoutForm extends React.Component {
     const emailRegex = RegExp(/^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     const zipRegex = RegExp(/^[0-9]{5}(?:-[0-9]{4})?$/);
 
-    if (this.state.fullName.length < 5) {
+    const fullName = this.state.fullName.trim();
+    if (fullName.length < 5) {
       checkValidity.fullName = false;
     }
 
@@ -109,11 +110,13 @@ class CheckoutForm extends React.Component {
       checkValidity.phone = false;
     }
 
-    if (this.state.address.length < 6) {
+    const address = this.state.address.trim();
+    if (address.length < 6) {
       checkValidity.address = false;
     }
 
-    if (this.state.city.length < 3) {
+    const city = this.state.city.trim();
+    if (city.length < 3) {
       checkValidity.city = false;
     }
 
@@ -125,7 +128,8 @@ class CheckoutForm extends React.Component {
       checkValidity.zip = false;
     }
 
-    if (this.state.cardHolder.length < 5) {
+    const cardHolder = this.state.cardHolder.trim();
+    if (cardHolder.length < 5) {
       checkValidity.cardHolder = false;
     }
 
