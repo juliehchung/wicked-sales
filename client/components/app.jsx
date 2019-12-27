@@ -5,6 +5,7 @@ import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import LiveDemoModal from './live-demo-modal';
+import CheckoutConfirmation from './checkout-confirmation';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -12,13 +13,15 @@ export default class App extends React.Component {
     this.state = {
       view: { type: 'catalog', params: {} },
       cart: [],
-      showModal: true
+      showModal: true,
+      confirmedProducts: []
     };
     this.closeModal = this.closeModal.bind(this);
     this.setView = this.setView.bind(this);
     this.updateCart = this.updateCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
+    this.confirmPurchase = this.confirmPurchase.bind(this);
   }
 
   setView(type, params) {
@@ -78,8 +81,12 @@ export default class App extends React.Component {
     };
     fetch(requestOrder, request)
       .then(response => response.json())
-      .then(order => this.setState({ view: { type: 'catalog', params: {} }, cart: [] }))
+      .then(order => this.setState({ view: { type: 'confirmation', params: {} }, cart: [] }))
       .catch(error => console.error('Fetch Failed:', error));
+  }
+
+  confirmPurchase(products) {
+    this.setState({ confirmedProducts: products });
   }
 
   render() {
@@ -93,7 +100,9 @@ export default class App extends React.Component {
     } else if (viewType === 'cart') {
       productElem = <CartSummary cartItems={this.state.cart} remove={this.removeFromCart} update={this.updateCart} viewData={this.setView}/>;
     } else if (viewType === 'checkout') {
-      productElem = <CheckoutForm checkout={this.placeOrder} viewData={this.setView} priceInfo={this.state.cart}/>;
+      productElem = <CheckoutForm checkout={this.placeOrder} viewData={this.setView} priceInfo={this.state.cart} confirm={this.confirmPurchase}/>;
+    } else if (viewType === 'confirmation') {
+      productElem = <CheckoutConfirmation viewData={this.setView} purchased={this.state.confirmedProducts} />;
     }
     return (
       <>
