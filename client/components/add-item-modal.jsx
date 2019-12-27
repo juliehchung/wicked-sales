@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AddToCartModal(props) {
+function AddItemModal(props) {
   return (
     <div className="backdrop position-fixed d-flex h-100 w-100">
       <div className="modal-contents m-auto bg-white border rounded mt-5 p-3">
@@ -15,4 +15,4 @@ function AddToCartModal(props) {
   );
 }
 
-export default AddToCartModal;
+export default AddItemModal;

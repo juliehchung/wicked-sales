@@ -3,20 +3,25 @@ import React from 'react';
 function CartSummaryItem(props) {
   const cartItemInfo = props.cartData;
   const productId = cartItemInfo.productId;
-  const cartItemId = cartItemInfo.cartItemId;
   const quantity = cartItemInfo.quantity;
   let price = cartItemInfo.price;
   price = '$' + ((price / 100).toFixed(2));
   let itemRemove;
   if (quantity === 1) {
-    itemRemove = () => props.remove({ productId, cartItemId });
+    itemRemove = () => {
+      props.removeProduct(cartItemInfo);
+      props.toggleModal();
+    };
   } else {
     itemRemove = () => props.update({ productId, operator: '-' });
   }
   return (
     <div className="bg-white border rounded col-12 py-2 my-3">
       <button type="button" className="close" aria-label="Close"
-        onClick={() => props.remove({ productId, cartItemId })}>
+        onClick={() => {
+          props.removeProduct(cartItemInfo);
+          props.toggleModal();
+        }}>
         <span aria-hidden="true">&times;</span>
       </button>
       <div className="row py-2">
