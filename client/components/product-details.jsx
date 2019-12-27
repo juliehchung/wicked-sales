@@ -1,13 +1,22 @@
 import React from 'react';
+import AddToCartModal from './add-to-cart-modal';
 
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { product: null };
+    this.state = {
+      product: null,
+      showModal: false
+    };
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidMount() {
     this.getProductDetails();
+  }
+
+  toggleModal() {
+    this.setState({ showModal: !this.state.showModal });
   }
 
   getProductDetails() {
@@ -27,8 +36,12 @@ class ProductDetails extends React.Component {
     }
     let price = productInfo.price;
     price = '$' + ((price / 100).toFixed(2));
+    const modal = this.state.showModal ? <AddToCartModal setView={this.props.viewData} product={productInfo}/> : null;
     return (
       <div className="container col-10 my-5">
+        <div className="container col-10">
+          {modal}
+        </div>
         <div className="bg-white border rounded py-3">
           <div className="back text-muted ml-3" onClick={() => this.props.viewData('catalog', {})}>
             {'< Back to Catalog'}
@@ -41,7 +54,10 @@ class ProductDetails extends React.Component {
               <h5>{productInfo.name}</h5>
               <h6 className="text-muted">{price}</h6>
               <p>{productInfo.shortDescription}</p>
-              <button className="btn btn-primary align-self-start" onClick={() => addToCart({ productId: productInfo.productId, operator: '+' })}>Add to Cart</button>
+              <button className="btn btn-primary align-self-start" onClick={() => {
+                addToCart({ productId: productInfo.productId, operator: '+' });
+                this.toggleModal();
+              }}>Add to Cart</button>
             </div>
           </div>
           <div className="row m-4">
