@@ -37,21 +37,6 @@ class CheckoutForm extends React.Component {
   }
 
   handleChange(event) {
-    const checkValidity = {
-      fullName: true,
-      email: true,
-      phone: true,
-      address: true,
-      address2: true,
-      city: true,
-      state: true,
-      zip: true,
-      cardHolder: true,
-      card: true,
-      expiration: true,
-      cvv: true
-    };
-
     const numRegex = RegExp(/^[0-9]*$/);
     const zipRegex = RegExp(/^[0-9]*-*[0-9]*$/);
 
@@ -68,11 +53,34 @@ class CheckoutForm extends React.Component {
           this.setState({ [event.target.name]: event.target.value });
         }
         break;
+      case 'fullName':
+      case 'address':
+      case 'address2':
+      case 'city':
+      case 'cardHolder':
+        if (event.target.value.indexOf('  ') === -1) {
+          this.setState({ [event.target.name]: event.target.value });
+        }
+        break;
       default:
         this.setState({ [event.target.name]: event.target.value });
         break;
     }
 
+    const checkValidity = {
+      fullName: true,
+      email: true,
+      phone: true,
+      address: true,
+      address2: true,
+      city: true,
+      state: true,
+      zip: true,
+      cardHolder: true,
+      card: true,
+      expiration: true,
+      cvv: true
+    };
     this.setState({ checkValidity });
   }
 
