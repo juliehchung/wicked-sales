@@ -12,7 +12,7 @@ export default class App extends React.Component {
     this.state = {
       view: { type: 'catalog', params: {} },
       cart: [],
-      showDemoModal: true
+      showModal: true
     };
     this.closeModal = this.closeModal.bind(this);
     this.setView = this.setView.bind(this);
@@ -28,7 +28,7 @@ export default class App extends React.Component {
   }
 
   closeModal() {
-    this.setState({ showDemoModal: false });
+    this.setState({ showModal: false });
   }
 
   getCartItems() {
@@ -85,7 +85,7 @@ export default class App extends React.Component {
   render() {
     let productElem;
     const viewType = this.state.view.type;
-    const modal = this.state.showDemoModal ? <LiveDemoModal close={this.closeModal} /> : null;
+    const modal = this.state.showModal ? <LiveDemoModal close={this.closeModal} /> : null;
     if (viewType === 'catalog') {
       productElem = <ProductList viewData={this.setView} />;
     } else if (viewType === 'details') {
