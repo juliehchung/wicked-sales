@@ -164,6 +164,7 @@ class CheckoutForm extends React.Component {
         expiration: `${this.state.month}/${this.state.year}`,
         cvv: this.state.cvv
       };
+      this.props.confirm(this.props.priceInfo);
       this.props.checkout(placeOrder);
     } else {
       this.setState({ checkValidity });
