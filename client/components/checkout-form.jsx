@@ -68,6 +68,15 @@ class CheckoutForm extends React.Component {
           this.setState({ [event.target.name]: event.target.value });
         }
         break;
+      case 'fullName':
+      case 'address':
+      case 'address2':
+      case 'city':
+      case 'cardHolder':
+        if (event.target.value.indexOf('  ') === -1) {
+          this.setState({ [event.target.name]: event.target.value });
+        }
+        break;
       default:
         this.setState({ [event.target.name]: event.target.value });
         break;
