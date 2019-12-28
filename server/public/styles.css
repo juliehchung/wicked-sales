@@ -33,6 +33,13 @@
 }
 
 .hero-text {
+  position: relative;
   font-size: 3rem;
   font-family: 'Courier New', Courier, monospace;
+}
+
+.quote {
+  position: relative;
+  top: 23%;
+  padding-right: 3%;
 }
