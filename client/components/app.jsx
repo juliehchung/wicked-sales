@@ -13,7 +13,7 @@ export default class App extends React.Component {
     this.state = {
       view: { type: 'catalog', params: {} },
       cart: [],
-      showModal: true,
+      showModal: false,
       confirmedProducts: []
     };
     this.closeModal = this.closeModal.bind(this);
@@ -110,9 +110,7 @@ export default class App extends React.Component {
         <div className="container col-10">
           {modal}
         </div>
-        <div className="container">
-          {productElem}
-        </div>
+        {productElem}
       </>
     );
   }
