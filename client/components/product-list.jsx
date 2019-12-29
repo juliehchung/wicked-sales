@@ -24,10 +24,10 @@ class ProductList extends React.Component {
     const prevProducts = this.state.products;
     return (
       <div>
-        <div className="d-flex hero-image background-dark">
-          <h3 className="hero-text col-4 d-flex align-items-center text-white">
-            <i className="quote fas fa-quote-left d-flex align-self-start"></i>
-            All you need is love and a dog.
+        <div className="hero-image d-flex background-dark">
+          <h3 className="d-flex align-items-center text-white">
+            <i className="quote fas fa-quote-left ml-4"></i>
+            <h3 className="hero-text col-6 col-md-6 col-lg-8">All you need is love and a dog.</h3>
           </h3>
         </div>
         <div className="container d-flex flex-wrap align-items-stretch mb-5">
