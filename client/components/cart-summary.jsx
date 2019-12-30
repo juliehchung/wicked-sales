@@ -33,7 +33,7 @@ class CartSummary extends React.Component {
     if (cart.length === 0) {
       return (
         <div className="container cart-content col-10 my-5">
-          <div className="back text-muted my-3" onClick={() => changeView('catalog', {})}>
+          <div className="click text-muted my-3" onClick={() => changeView('catalog', {})}>
             {'< Back to Catalog'}
           </div>
           <h2>Your cart is empty!</h2>
@@ -45,7 +45,7 @@ class CartSummary extends React.Component {
         <div className="container col-10">
           {modal}
         </div>
-        <div className="back text-muted my-3 mt-4" onClick={() => changeView('catalog', {})}>
+        <div className="click text-muted my-3 mt-4" onClick={() => changeView('catalog', {})}>
           {'< Back to Catalog'}
         </div>
         <h2>My Cart</h2>

@@ -43,11 +43,11 @@ class ProductDetails extends React.Component {
           {modal}
         </div>
         <div className="col-md-10 bg-white border rounded py-3 m-auto">
-          <div className="back text-muted ml-3" onClick={() => this.props.viewData('catalog', {})}>
+          <div className="click text-muted ml-3" onClick={() => this.props.viewData('catalog', {})}>
             {'< Back to Catalog'}
           </div>
           <div className="row m-4">
-            <div className="col-md-4">
+            <div className="product col-md-4">
               <img src={productInfo.image} alt={productInfo.name} className="img-fluid rounded" />
             </div>
             <div className="col-md-8 d-flex flex-column justify-content-end">
