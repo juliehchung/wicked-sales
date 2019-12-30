@@ -6,6 +6,7 @@ import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import LiveDemoModal from './live-demo-modal';
 import CheckoutConfirmation from './checkout-confirmation';
+import Footer from './footer';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -111,6 +112,7 @@ export default class App extends React.Component {
           {modal}
         </div>
         {productElem}
+        <Footer />
       </>
     );
   }

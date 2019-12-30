@@ -8,8 +8,8 @@ function Header(props) {
   }
   const items = cartItemCount === 1 ? '1 Item' : `${cartItemCount} Items`;
   return (
-    <div className="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
-      <a className="navbar-brand" href="">
+    <div className="navbar navbar-dark bg-dark justify-content-between">
+      <a className="mt-auto text-white" href="">
         <i className="fas fa-dollar-sign m-3"></i>
         BORKER
       </a>
