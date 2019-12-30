@@ -2,10 +2,12 @@ import React from 'react';
 
 function Footer(props) {
   return (
-    <div className="mt-auto py-3 bg-dark text-white h-40">
-      <div className="container">
-        This is a Footer
-      </div>
+    <div className="bg-dark text-white py-5">
+      <h3 className="text-center pt-3">
+        <i className="fas fa-paw mr-2"></i>
+        BORKER
+      </h3>
+      <p className="text-center pb-0">Happy Tails make Happy Tales</p>
     </div>
   );
 }
