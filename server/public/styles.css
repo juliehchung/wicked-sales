@@ -30,6 +30,7 @@
   background-size: cover;
   background-position: 50% 75%;
   position: relative;
+  user-select: none;
 }
 
 .hero-text {

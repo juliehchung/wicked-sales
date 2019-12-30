@@ -9,11 +9,11 @@ function Header(props) {
   const items = cartItemCount === 1 ? '1 Item' : `${cartItemCount} Items`;
   return (
     <div className="navbar navbar-dark bg-dark justify-content-between m-auto sticky-top">
-      <h5 className="my-auto text-white" href="">
+      <h5 className="back my-auto text-white" onClick={() => viewCart('catalog', {})}>
         <i className="fas fa-paw m-3"></i>
         BORKER
       </h5>
-      <h6 className="my-auto mr-3 text-white" onClick={() => viewCart('cart', {})} href="#">
+      <h6 className="back my-auto mr-3 text-white" onClick={() => viewCart('cart', {})}>
         {items}
         <i className="fas fa-shopping-cart m-2"></i>
       </h6>
