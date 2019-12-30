@@ -42,7 +42,7 @@ class ProductDetails extends React.Component {
         <div className="container col-10">
           {modal}
         </div>
-        <div className="bg-white border rounded py-3">
+        <div className="col-md-10 bg-white border rounded py-3 m-auto">
           <div className="back text-muted ml-3" onClick={() => this.props.viewData('catalog', {})}>
             {'< Back to Catalog'}
           </div>
