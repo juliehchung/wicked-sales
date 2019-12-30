@@ -8,15 +8,15 @@ function Header(props) {
   }
   const items = cartItemCount === 1 ? '1 Item' : `${cartItemCount} Items`;
   return (
-    <div className="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
-      <a className="navbar-brand" href="">
-        <i className="fas fa-dollar-sign m-3"></i>
+    <div className="navbar navbar-dark bg-dark justify-content-between m-auto sticky-top">
+      <h5 className="my-auto text-white" href="">
+        <i className="fas fa-paw m-3"></i>
         BORKER
-      </a>
-      <a className="mr-3 text-white" onClick={() => viewCart('cart', {})} href="#">
+      </h5>
+      <h6 className="my-auto mr-3 text-white" onClick={() => viewCart('cart', {})} href="#">
         {items}
         <i className="fas fa-shopping-cart m-2"></i>
-      </a>
+      </h6>
     </div>
   );
 }
