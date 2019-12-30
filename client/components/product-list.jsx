@@ -27,7 +27,7 @@ class ProductList extends React.Component {
         <div className="hero-image d-flex background-dark">
           <h3 className="d-flex align-items-center text-white">
             <i className="quote fas fa-quote-left ml-4"></i>
-            <h3 className="hero-text col-6 col-md-6 col-lg-8">All you need is love and a dog.</h3>
+            <h3 className="hero-text col-8 col-md-6 col-xl-8">All you need is love and a dog.</h3>
           </h3>
         </div>
         <div className="container d-flex flex-wrap align-items-stretch mb-5">
