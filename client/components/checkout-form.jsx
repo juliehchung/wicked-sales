@@ -345,7 +345,7 @@ class CheckoutForm extends React.Component {
               <label className="form-check-label" htmlFor="acknowledgement">I acknowledge that this is a demo application, and the information above is not my genuine financial or personal information.</label>
             </div>
             <hr className="my-4"/>
-            <button type="submit" className="btn btn-dark align-self-end">Submit</button>
+            <button type="submit" className="btn btn-success align-self-end">Submit</button>
           </form>
           <div className="container">
             <div className="row d-flex justify-content-between align-items-center my-3">

@@ -57,7 +57,7 @@ class CartSummary extends React.Component {
         <div className="container mb-5">
           <div className="row d-flex justify-content-between align-items-center my-3">
             <h4>Total: {total}</h4>
-            <button className="btn btn-dark align-self-end" onClick={() => changeView('checkout', {})}>Checkout</button>
+            <button className="btn btn-success align-self-end" onClick={() => changeView('checkout', {})}>Checkout</button>
           </div>
         </div>
       </div>
