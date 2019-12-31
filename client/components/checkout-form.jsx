@@ -183,7 +183,7 @@ class CheckoutForm extends React.Component {
     return (
       <div className="container col-12 col-sm-10 col-md-8 col-lg-8 my-5">
         <div className="d-flex flex-wrap m-3">
-          <h2 className="text-secondary">Order Total: {total}</h2>
+          <h2 className="col-12 text-secondary">Order Total: {total}</h2>
           <form className="col-12" onSubmit={this.handleSubmit}>
             <h3 className="my-3">Billing/Shipping</h3>
             <div className="form-group">
@@ -347,7 +347,7 @@ class CheckoutForm extends React.Component {
             <hr className="my-4"/>
             <button type="submit" className="btn btn-success align-self-end">Submit</button>
           </form>
-          <div className="container">
+          <div className="col-12">
             <div className="row d-flex justify-content-between align-items-center my-3">
               <div className="click text-muted mt-2" onClick={() => viewCatalog('catalog', {})}>
                 <i className="fas fa-arrow-circle-left mr-2"></i>
