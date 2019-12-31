@@ -26,7 +26,7 @@ function CheckoutConfirmation(props) {
     <div className="col-md-12 my-4">
       <h1 className="col-md-8 mx-auto">Your order has been placed!</h1>
       <h2 className="col-md-8 mx-auto text-muted">Order Total: {total}</h2>
-      <div className="container">
+      <div className="col-md-12 mx-auto">
         {confirmationList}
       </div>
       <div className="col-md-8 mb-5 mx-auto">
