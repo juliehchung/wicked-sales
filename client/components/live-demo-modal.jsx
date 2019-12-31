@@ -15,7 +15,7 @@ function LiveDemoModal(props) {
             <label className="form-check-label" htmlFor="acknowledgement">I acknowledge that this is strictly a demo application.</label>
           </div>
           <div className="btn-group w-100 p-1">
-            <button className="btn btn-warning w-100">Proceed</button>
+            <button className="btn btn-danger w-100">Proceed</button>
           </div>
         </form>
       </div>

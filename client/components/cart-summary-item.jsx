@@ -30,10 +30,10 @@ function CartSummaryItem(props) {
           <h5>{cartItemInfo.name}</h5>
           <h6 className="text-muted">{price}</h6>
           <p>{cartItemInfo.shortDescription}</p>
-          <div className="d-flex flex-row align-items-center">
-            <i className="sub far fa-minus-square" onClick={itemRemove}></i>
-            <div>{quantity}</div>
-            <i className="add far fa-plus-square" onClick={() => props.update({ productId, operator: '+' })}></i>
+          <div className="row border rounded bg-light p-1 my-2 ml-0 mr-auto">
+            <i className="click far fa-minus-square m-auto p-1" onClick={itemRemove}></i>
+            <h6 className="m-auto p-1">{quantity}</h6>
+            <i className="click far fa-plus-square m-auto p-1" onClick={() => props.update({ productId, operator: '+' })}></i>
           </div>
         </div>
       </div>

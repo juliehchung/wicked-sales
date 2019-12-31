@@ -8,7 +8,7 @@
   object-fit: contain;
 }
 
-.back:hover, .product:hover, .add:hover, .sub:hover {
+.click:hover {
   cursor: pointer;
 }
 
@@ -20,8 +20,12 @@
 }
 
 .modal-contents {
-  max-width: 500px;
+  max-width: 380px;
   user-select: none;
+}
+
+.cart-content {
+  min-height: 60vh;
 }
 
 .hero-image {
@@ -30,6 +34,7 @@
   background-size: cover;
   background-position: 50% 75%;
   position: relative;
+  user-select: none;
 }
 
 .hero-text {

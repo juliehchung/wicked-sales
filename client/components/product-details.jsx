@@ -38,30 +38,31 @@ class ProductDetails extends React.Component {
     price = '$' + ((price / 100).toFixed(2));
     const modal = this.state.showModal ? <AddItemModal setView={this.props.viewData} product={productInfo}/> : null;
     return (
-      <div className="container col-10 my-5">
+      <div className="my-5">
         <div className="container col-10">
           {modal}
         </div>
-        <div className="bg-white border rounded py-3">
-          <div className="back text-muted ml-3" onClick={() => this.props.viewData('catalog', {})}>
-            {'< Back to Catalog'}
+        <div className="col-md-8 bg-white border rounded py-3 m-auto">
+          <div className="click text-muted ml-auto" onClick={() => this.props.viewData('catalog', {})}>
+            <i className="fas fa-arrow-circle-left mr-2"></i>
+            Back to Catalog
           </div>
-          <div className="row m-4">
-            <div className="col-md-4">
+          <div className="row m-4 mx-auto">
+            <div className="product col-md-4">
               <img src={productInfo.image} alt={productInfo.name} className="img-fluid rounded" />
             </div>
             <div className="col-md-8 d-flex flex-column justify-content-end">
               <h5>{productInfo.name}</h5>
               <h6 className="text-muted">{price}</h6>
               <p>{productInfo.shortDescription}</p>
-              <button className="btn btn-primary align-self-start" onClick={() => {
+              <button className="btn btn-success align-self-start" onClick={() => {
                 addToCart({ productId: productInfo.productId, operator: '+' });
                 this.toggleModal();
               }}>Add to Cart</button>
             </div>
           </div>
           <div className="row m-4">
-            <div className="col-12">
+            <div className="col-md-12">
               {productInfo.longDescription}
             </div>
           </div>

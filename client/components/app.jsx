@@ -73,6 +73,10 @@ export default class App extends React.Component {
     this.getCartItems();
   }
 
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
+
   placeOrder({ fullName, email, phone, address, cardHolder, card, expiration, cvv }) {
     const requestOrder = new Request('/api/orders');
     const request = {

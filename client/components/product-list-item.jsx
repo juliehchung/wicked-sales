@@ -7,7 +7,7 @@ function ProductListItem(props) {
   const viewProduct = props.viewData;
   return (
     <div className="col-md-6 col-lg-4 mt-5">
-      <div className="product card" onClick={() => viewProduct('details', { productId: product.productId })}>
+      <div className="click product card" onClick={() => viewProduct('details', { productId: product.productId })}>
         <img src={product.image} className="card-img-top" alt={product.name}></img>
         <div className="card-body">
           <h5 className="card-title">{product.name}</h5>
