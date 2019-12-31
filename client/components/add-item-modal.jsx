@@ -7,8 +7,8 @@ function AddItemModal(props) {
         <h2 className="m-2">Item added to cart</h2>
         <p className="m-2">{props.product.name} has been added to your cart.</p>
         <div className="btn-group w-100 p-1">
-          <button className="btn btn-warning w-50" onClick={() => props.setView('catalog', {})}>Continue Shopping</button>
-          <button className="btn btn-warning w-50" onClick={() => props.setView('cart', {})}>Go to Cart</button>
+          <button className="btn btn-secondary w-50" onClick={() => props.setView('catalog', {})}>Continue Shopping</button>
+          <button className="btn btn-success w-50" onClick={() => props.setView('cart', {})}>Go to Cart</button>
         </div>
       </div>
     </div>

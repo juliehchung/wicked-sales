@@ -30,8 +30,9 @@ function CheckoutConfirmation(props) {
         {confirmationList}
       </div>
       <div className="col-md-8 mb-5 mx-auto">
-        <div className="back text-muted" onClick={() => props.viewData('catalog', {})}>
-          {'< Continue Shopping'}
+        <div className="click text-muted" onClick={() => props.viewData('catalog', {})}>
+          <i className="fas fa-arrow-circle-left mr-2"></i>
+                Continue Shopping
         </div>
       </div>
     </div>
