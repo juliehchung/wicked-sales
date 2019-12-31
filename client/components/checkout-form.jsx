@@ -349,8 +349,9 @@ class CheckoutForm extends React.Component {
           </form>
           <div className="container">
             <div className="row d-flex justify-content-between align-items-center my-3">
-              <div className="back text-muted" onClick={() => viewCatalog('catalog', {})}>
-                {'< Continue Shopping'}
+              <div className="back text-muted mt-2" onClick={() => viewCatalog('catalog', {})}>
+                <i className="fas fa-arrow-circle-left mr-2"></i>
+                Continue Shopping
               </div>
             </div>
           </div>

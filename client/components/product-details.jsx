@@ -38,15 +38,16 @@ class ProductDetails extends React.Component {
     price = '$' + ((price / 100).toFixed(2));
     const modal = this.state.showModal ? <AddItemModal setView={this.props.viewData} product={productInfo}/> : null;
     return (
-      <div className="container col-10 my-5">
+      <div className="my-5">
         <div className="container col-10">
           {modal}
         </div>
-        <div className="col-md-10 bg-white border rounded py-3 m-auto">
-          <div className="click text-muted ml-3" onClick={() => this.props.viewData('catalog', {})}>
-            {'< Back to Catalog'}
+        <div className="col-md-8 bg-white border rounded py-3 m-auto">
+          <div className="click text-muted ml-auto" onClick={() => this.props.viewData('catalog', {})}>
+            <i className="fas fa-arrow-circle-left mr-2"></i>
+            Back to Catalog
           </div>
-          <div className="row m-4">
+          <div className="row m-4 mx-auto">
             <div className="product col-md-4">
               <img src={productInfo.image} alt={productInfo.name} className="img-fluid rounded" />
             </div>
@@ -61,7 +62,7 @@ class ProductDetails extends React.Component {
             </div>
           </div>
           <div className="row m-4">
-            <div className="col-12">
+            <div className="col-md-12">
               {productInfo.longDescription}
             </div>
           </div>
