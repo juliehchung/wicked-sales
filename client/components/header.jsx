@@ -9,7 +9,7 @@ function Header(props) {
   const items = cartItemCount === 1 ? '1 Item' : `${cartItemCount} Items`;
   return (
     <div className="navbar navbar-dark bg-dark justify-content-between m-auto sticky-top">
-      <h5 className="click my-auto text-white" onClick={() => viewCart('catalog', {})}>
+      <h5 className="click header-text my-auto text-white" onClick={() => viewCart('catalog', {})}>
         <i className="fas fa-paw m-3"></i>
         BORKER
       </h5>
