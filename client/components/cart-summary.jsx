@@ -13,6 +13,10 @@ class CartSummary extends React.Component {
     this.removeItem = this.removeItem.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   toggleModal() {
     this.setState({ showModal: !this.state.showModal });
   }

@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  font-family: 'Raleway';
+  animation: trans-fade 1000ms;
+}
+
+.hero-text, .header-text, .footer-text {
+ font-family: 'Courier New', Courier, monospace;
+}
+
 .product {
   height: 100%;
 }
@@ -40,11 +55,15 @@
 .hero-text {
   top: 12%;
   font-size: 2rem;
-  font-family: 'Courier New', Courier, monospace;
   position: relative;
 }
 
 .quote {
   font-size: 3rem;
   position: relative;
+}
+
+@keyframes trans-fade {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }

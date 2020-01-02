@@ -71,9 +71,6 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.getCartItems();
-  }
-
-  componentDidUpdate() {
     window.scrollTo(0, 0);
   }
 

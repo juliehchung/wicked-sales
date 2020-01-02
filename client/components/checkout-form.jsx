@@ -36,6 +36,10 @@ class CheckoutForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   handleChange(event) {
     const numRegex = RegExp(/^[0-9]*$/);
     const zipRegex = RegExp(/^[0-9]*-*[0-9]*$/);
@@ -292,7 +296,7 @@ class CheckoutForm extends React.Component {
               </div>
               <div className="form-group col-md-6">
                 <label htmlFor="cardNumber">Card Number</label>
-                <input type="text" maxLength="16" autoComplete="new-password" className={`form-control ${this.state.checkValidity.card ? null : 'is-invalid'}`} id="cardNumber" value={this.state.card} name="card" placeholder="0000 0000 0000 0000" onChange={this.handleChange}/>
+                <input type="text" maxLength="16" autoComplete="new-password" className={`form-control ${this.state.checkValidity.card ? null : 'is-invalid'}`} id="cardNumber" value={this.state.card} name="card" placeholder="1234123412341234" onChange={this.handleChange}/>
                 <div className="invalid-feedback">Please enter a valid card number.</div>
               </div>
             </div>
