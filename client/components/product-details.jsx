@@ -49,9 +49,9 @@ class ProductDetails extends React.Component {
           </div>
           <div className="row m-4 mx-auto">
             <div className="product col-md-4">
-              <img src={productInfo.image} alt={productInfo.name} className="img-fluid rounded" />
+              <img src={productInfo.image} alt={productInfo.name} className="img-fluid" />
             </div>
-            <div className="col-md-8 d-flex flex-column justify-content-end">
+            <div className="col-md-8 d-flex flex-column justify-content-center">
               <h5>{productInfo.name}</h5>
               <h6 className="text-muted">{price}</h6>
               <p>{productInfo.shortDescription}</p>
@@ -61,7 +61,7 @@ class ProductDetails extends React.Component {
               }}>Add to Cart</button>
             </div>
           </div>
-          <div className="row m-4">
+          <div className="row m-4 mx-auto">
             <div className="col-md-12">
               {productInfo.longDescription}
             </div>
