@@ -14,7 +14,7 @@ export default class App extends React.Component {
     this.state = {
       view: { type: 'catalog', params: {} },
       cart: [],
-      showModal: false,
+      showModal: true,
       confirmedProducts: []
     };
     this.closeModal = this.closeModal.bind(this);
