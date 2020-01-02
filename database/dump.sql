@@ -39,7 +39,6 @@ CREATE TABLE `cartItems` (
 
 LOCK TABLES `cartItems` WRITE;
 /*!40000 ALTER TABLE `cartItems` DISABLE KEYS */;
-INSERT INTO `cartItems` VALUES (170,49,1,995,3),(175,50,1,995,2),(239,52,1,995,1),(240,52,4,2595,1),(241,52,3,600,1),(250,53,1,995,2),(251,53,2,2000,3),(252,53,3,600,1),(256,54,1,995,1),(257,54,2,2000,1),(273,55,2,2000,2),(275,55,3,600,1),(302,56,2,2000,1),(311,56,1,995,1),(312,56,3,600,1),(313,57,2,2000,1),(314,58,1,995,1),(316,59,3,600,3),(319,60,1,995,1),(333,61,2,2000,2),(339,61,3,600,1);
 /*!40000 ALTER TABLE `cartItems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +62,6 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-INSERT INTO `carts` VALUES (49,'2019-12-24 00:26:36'),(50,'2019-12-24 17:17:56'),(51,'2019-12-26 23:55:55'),(52,'2019-12-27 19:33:11'),(53,'2019-12-27 21:23:48'),(54,'2019-12-27 21:28:18'),(55,'2019-12-30 22:18:42'),(56,'2019-12-30 23:41:07'),(57,'2019-12-31 01:10:44'),(58,'2019-12-31 01:11:50'),(59,'2019-12-31 01:15:01'),(60,'2020-01-02 19:45:15'),(61,'2020-01-02 19:48:07');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +94,6 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (18,50,'Blabbity Blab','blabber@blab.blab','1234567890','1234 Blab Blvd. \n \nBlabbers, AL 12345','Blabbity Blab','1234123412341234','1',123,'2019-12-26 23:36:36'),(19,52,'qweqweqw','qweqwe@asd.com','12345678765','asdasdasdsa \n \nasdasdasd, NH 12345','asdasdasdasd','1231231231231231','1',123,'2019-12-27 20:19:38'),(20,53,'Jjujuju','juju@juju.ju','23423423423','2342342342 sfsdf \n \nsdfsdfsf, AL 91823','jujujuju','1231231231231231','1',123,'2019-12-27 21:24:34'),(21,54,'sdfsdfsdf','asdas@ads.co','12312312312','12312312312 \n \nasdasdasdas, AL 12345','asdasdasdad','1231231231231231','1',123,'2019-12-27 21:28:43'),(22,55,'Working','well@working.well','12312312312','123123123 \n \nWorking Well, WA 12312','Working Well','1231231231231231','1',123,'2019-12-30 23:31:44'),(23,56,'Blahblah','blah@blah.blah','1234567890','1234 Blab \n \nBlabber, AL 12345','Blahblah','1234123412341234','1',123,'2019-12-31 01:05:31'),(24,57,'Blahblah','blah@blah.com','12341234123','1234 Blab \n \nBlabbers, AL 12345','Blahblah','1234123412341234','10',123,'2019-12-31 01:11:26'),(25,58,'Blahblah','blah@blah.com','12341234123','1234 Blah \n \nBlahblah, AL 12345','Blahblah','1234123412341234','10',123,'2019-12-31 01:12:22'),(26,59,'Booper','boop@boop.boo','12341234123','1234 Boop \n \nBooper, AL 12345','Booper','1234123412341234','10',123,'2020-01-02 19:33:59'),(27,60,' sdfgsdfgs','asdf@asdfa.sdf','66666666666','34534563 563 456345 34ydfhdghf gh \n \nedfghdfgh, CO 55555-5555','Cheese McGregor','5555555555555555','4',555,'2020-01-02 19:47:19'),(28,61,'Jujujuju','juju@juj.juj','12341234123','1234 jujuju \n \nJujuju, AL 12345','Jujuju','1234123412341234','10',123,'2020-01-02 20:59:57');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-02 21:40:36
+-- Dump completed on 2020-01-02 21:50:15
