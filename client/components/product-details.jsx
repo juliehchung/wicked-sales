@@ -13,6 +13,7 @@ class ProductDetails extends React.Component {
 
   componentDidMount() {
     this.getProductDetails();
+    window.scrollTo(0, 0);
   }
 
   toggleModal() {
