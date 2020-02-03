@@ -23,7 +23,10 @@ Link: https://borker.juliehchung.com
 - User can view the product details.
 - User can add a product to the cart.
 - User can view a cart summary.
+- User can remove a product from the cart.
+- User can increment/decrement product quantities in the cart.
 - User can place an order.
+- User can view order confirmation.
 
 ## Preview of the App
 
