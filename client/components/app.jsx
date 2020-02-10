@@ -109,9 +109,7 @@ export default class App extends React.Component {
     return (
       <>
         <Header cart={this.state.cart} viewData={this.setView}/>
-        <div className="container col-10">
-          {modal}
-        </div>
+        {modal}
         {productElem}
         <Footer />
       </>
