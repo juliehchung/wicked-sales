@@ -33,7 +33,7 @@ class ProductDetails extends React.Component {
     const addToCart = this.props.addItem;
     const productInfo = this.state.product;
     if (!productInfo) {
-      return null;
+      return <div className="cart-content"></div>;
     }
     let price = productInfo.price;
     price = '$' + ((price / 100).toFixed(2));
