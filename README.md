@@ -28,7 +28,7 @@ Link: https://borker.juliehchung.com
 - User can place an order.
 - User can view order confirmation.
 
-## Preview of the App
+## Preview
 
 ![Borker](server/public/images/borker.gif)
 
