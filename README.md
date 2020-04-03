@@ -41,10 +41,10 @@ Link: https://borker.juliehchung.com
 
 #### Getting Started
 
-1. Clone the repository.
+1. Clone and enter the repository.
 
     ```shell
-    git clone https://github.com/juliehchung/borker
+    git clone https://github.com/juliehchung/borker.git
     cd borker
     ```
 
@@ -54,8 +54,10 @@ Link: https://borker.juliehchung.com
     npm install
     ```
 
-3. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
+3. Start the project.
 
     ```shell
     npm run dev
     ```
+
+4. Once started, you can view the application by opening http://localhost:3000 in your browser.
